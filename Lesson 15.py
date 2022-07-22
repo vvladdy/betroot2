@@ -86,52 +86,43 @@ print('\nTask 3')
 
 # Your task is to create the TVController class and methods described above.
 
-
 class TVController:
 
-    def __init__(self, CHANNELS, but_fst_ch, but_lst_ch, but_turn_ch,
-                 but_nxt_ch, but_prv_ch, but_cur_ch, but_alphabet):
-        self.CHANNELS = CHANNELS
-        self.buttom_firs_chan = but_fst_ch
-        self.buttom_last_chan = but_lst_ch
-        self.turn_chan = but_turn_ch
-        self.next_chan = but_nxt_ch
-        self.prev_channel = but_prv_ch
-        self.curr_channel = but_cur_ch
-        self.name_channel = but_alphabet
+    def __init__(self, channel):
+        self.cur_chan = None
+        self.channels = channel
 
-    def first_ch(self):
-        print('First channel    : ', self.buttom_firs_chan[0])
+    def first_chanel(self):
+        print('First channel    : ', self.channels[0])
 
     def last_ch(self):
-        print('Last Channel     : ', self.buttom_last_chan[-1])
+         print('Last Channel     : ', self.channels[-1])
 
     def turn_channel(self, a):
-        global cur_chan
-        print('Turn to channel  : ', self.turn_chan[a-1])
-        cur_chan = a
+        print('Turn to channel  : ', self.channels[a-1])
+        self.cur_chan = a
 
     def next_channel(self):
-        if cur_chan <= (len(self.CHANNELS)-1):
-            print('Next channel     : ', self.next_chan[cur_chan])
+        if self.cur_chan <= (len(self.channels)-1):
+            print('Next channel     : ', self.channels[self.cur_chan])
         else:
-            print('Next channel     : ', self.next_chan[cur_chan - len(
-                self.CHANNELS)])
+            print('Next channel     : ', self.channels[self.cur_chan - len(
+                self.channels)])
 
     def previous_channel(self):
-        if cur_chan >= (len(self.CHANNELS)-1):
-            print('Previous channel : ', self.next_chan[cur_chan-1])
+        if self.cur_chan >= (len(self.channels)-1):
+            print('Previous channel : ', self.channels[self.cur_chan-1])
         else:
-            print('Previous channel : ', self.next_chan[(cur_chan-1) - len(
-                self.CHANNELS)])
+            print('Previous channel : ', self.channels[(self.cur_chan-1) - len(
+                self.channels)])
 
     def current_channel(self):
-        print("Current channel  : ", self.curr_channel[cur_chan-1])
+        print("Current channel  : ", self.channels[self.cur_chan-1])
 
     def is_exist(self, a):
-        if a.isdigit() and 1 <= int(a) < (len(self.CHANNELS)):
-            print('Name of channel  : ', self.name_channel[int(a)])
-        elif a.isalpha() and a in self.CHANNELS:
+        if a.isdigit() and 1 <= int(a) < (len(self.channels)):
+            print('Name of channel  : ', self.channels[int(a)])
+        elif a.isalpha() and a in self.channels:
             print(f'YES, channel {a} is in list')
         else:
             print(f'NO, channel {a} does not in list')
@@ -139,16 +130,80 @@ class TVController:
 
 if __name__ == '__main__':
     CHANNELS = ["BBC", "Discovery", "TV1000"]
-    controller = TVController(CHANNELS, CHANNELS, CHANNELS, CHANNELS,
-                              CHANNELS, CHANNELS, CHANNELS, CHANNELS)
-    print('CHANNELS         : ', CHANNELS)
-    controller.first_ch()         # BBC
-    controller.last_ch()          # "TV1000"
-    controller.turn_channel(1)    # "BBC"
-    controller.next_channel()     # "Discovery"
-    controller.previous_channel() # "BBC"
-    controller.current_channel()  # "BBC"
-    controller.is_exist(str(4))   # "No"
-    controller.is_exist("BBC")    # "Yes"
+    controller = TVController(CHANNELS)
+    controller.first_chanel()       # BBC
+    controller.last_ch()            # "TV1000"
+    controller.turn_channel(1)      # "BBC"
+    controller.next_channel()       # "Discovery"
+    controller.previous_channel()   # "BBC"
+    controller.current_channel()    # "BBC"
+    controller.is_exist(str(4))     # "No"
+    controller.is_exist("BBC")      # "Yes"
 
 
+# class TVController:
+#     CHANNELS = ["BBC", "Discovery", "TV1000"]
+#
+#     def __init__(self, CHANNELS, but_fst_ch, but_lst_ch, but_turn_ch,
+#                  but_nxt_ch, but_prv_ch, but_cur_ch, but_alphabet):
+#         self.CHANNELS = CHANNELS
+#         self.buttom_firs_chan = but_fst_ch
+#         self.buttom_last_chan = but_lst_ch
+#         self.turn_chan = but_turn_ch
+#         self.next_chan = but_nxt_ch
+#         self.prev_channel = but_prv_ch
+#         self.curr_channel = but_cur_ch
+#         self.name_channel = but_alphabet
+#
+#     def first_ch(self):
+#         print('First channel    : ', self.buttom_firs_chan[0])
+#
+#     def last_ch(self):
+#         print('Last Channel     : ', self.buttom_last_chan[-1])
+#
+#     def turn_channel(self, a):
+#         global cur_chan
+#         print('Turn to channel  : ', self.turn_chan[a-1])
+#         cur_chan = a
+#
+#     def next_channel(self):
+#         if cur_chan <= (len(self.CHANNELS)-1):
+#             print('Next channel     : ', self.next_chan[cur_chan])
+#         else:
+#             print('Next channel     : ', self.next_chan[cur_chan - len(
+#                 self.CHANNELS)])
+#
+#     def previous_channel(self):
+#         if cur_chan >= (len(self.CHANNELS)-1):
+#             print('Previous channel : ', self.next_chan[cur_chan-1])
+#         else:
+#             print('Previous channel : ', self.next_chan[(cur_chan-1) - len(
+#                 self.CHANNELS)])
+#
+#     def current_channel(self):
+#         print("Current channel  : ", self.curr_channel[cur_chan-1])
+#
+#     def is_exist(self, a):
+#         if a.isdigit() and 1 <= int(a) < (len(self.CHANNELS)):
+#             print('Name of channel  : ', self.name_channel[int(a)])
+#         elif a.isalpha() and a in self.CHANNELS:
+#             print(f'YES, channel {a} is in list')
+#         else:
+#             print(f'NO, channel {a} does not in list')
+#
+#
+# if __name__ == '__main__':
+#     CHANNELS = ["BBC", "Discovery", "TV1000"]
+#     controller = TVController(CHANNELS, CHANNELS, CHANNELS, CHANNELS,
+#                               CHANNELS, CHANNELS, CHANNELS, CHANNELS)
+#     print('CHANNELS         : ', CHANNELS)
+#     controller.first_ch()         # BBC
+#     controller.last_ch()          # "TV1000"
+#     controller.turn_channel(1)    # "BBC"
+#     controller.next_channel()     # "Discovery"
+#     controller.previous_channel() # "BBC"
+#     controller.current_channel()  # "BBC"
+#     controller.is_exist(str(4))   # "No"
+#     controller.is_exist("BBC")    # "Yes"
+#
+#
