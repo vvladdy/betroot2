@@ -205,5 +205,3 @@ if __name__ == '__main__':
 #     controller.current_channel()  # "BBC"
 #     controller.is_exist(str(4))   # "No"
 #     controller.is_exist("BBC")    # "Yes"
-#
-#
