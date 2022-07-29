@@ -194,3 +194,13 @@ assert do_something('True') is True
 assert do_string('67') == '67'
 
 assert do_float('67.5') == 67.5
+
+
+
+def f(value):
+    while True:
+        value = (yield value)
+        a = f(10)
+print(next(a))
+print(next(a))
+print(a.send(20))
