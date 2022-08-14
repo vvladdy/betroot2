@@ -146,3 +146,41 @@ print(el.seek(6))
 print(el)
 el.pop()
 print(el)
+
+print('\nQueue\n')
+class MyQueue:
+
+    def __init__(self):
+        self.myqueue = []
+
+    def pusheue(self, item):
+        self.myqueue.append(item)
+
+    def popqeue(self):
+        if len(self.myqueue) < 1:
+            return None
+        return self.myqueue.pop(0)
+
+    def seek(self, it):
+        for el in range(len(self.myqueue)):
+            if it == self.myqueue[el]:
+                print(f'Element <{it}> insist')
+                return 'Index position {}'.format(el)
+        else:
+            raise ValueError('Such element does not exist')
+
+    def __str__(self):
+        return 'Our steck {} quantity of elements {}'.format(self.myqueue,
+                                                             len(self.myqueue))
+
+el = MyQueue()
+el.pusheue(4)
+el.pusheue(5)
+el.pusheue(6)
+el.pusheue('klo')
+print(el.seek(6))
+
+
+print(el)
+el.popqeue()
+print(el)
