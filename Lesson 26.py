@@ -69,7 +69,7 @@ def valid_parentheses(st: str) -> str:
     else:
         return '[] - Not Balanced'
 
-print(valid_parentheses('((())))((([[]]{{{}'))
+print(valid_parentheses('((([)))])((([[]]{{{}'))
 
 print('\nTask 2 var')
 class Stack:
